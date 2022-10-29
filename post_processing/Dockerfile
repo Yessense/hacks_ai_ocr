@@ -1,0 +1,1 @@
+FROM deeppavlov/base-gpu

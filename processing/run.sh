@@ -1,0 +1,1 @@
+docker run -itd --rm -p 8080:8080 --gpus all -e NVIDIA_DRIVER_CAPABILITIES=all ocr_reader:latest
