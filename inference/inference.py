@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 from metrics import sber_metric
+from spell_checker import post_processing
 
 wib = WordsinBoxes(csv_file="../dataset/train.csv", root_dir="../dataset/", n_images=None,
                    cached_info_path='./cache.npz')
@@ -36,17 +37,21 @@ def get_answer(image):
 metric = 0
 for i, batch in enumerate(wib):
     image, label = batch
-    answer = get_answer(image)
-    if len(answer):
-        text = answer[0][1]
+    output = get_answer(image)
+    if len(output):
+        text = []
+        for answer in output:
+            text.append(answer[1])
+        # text = post_processing(text)
+        text = "\n".join(text)
         current_metric = sber_metric(text, label)
         metric += current_metric
-
     else:
-        current_metric = 0
+        current_metric = 0.
     if i % 100 == 0:
         print(f'{i}. current: {current_metric}, total: {metric/(i+1):0.4f} ')
 
 metric /= len(wib)
+
 
 print(metric)

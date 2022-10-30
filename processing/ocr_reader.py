@@ -29,7 +29,7 @@ if __name__ == '__main__':
     parser.add_argument('--detail', type=int, default=1, choices=[0, 1])
     parser.add_argument('--paragraph', type=bool, default=True)
     parser.add_argument('--allowed_list', type=str, default=NUMBERS + SYMBOLS + LANG_CHARS)
-    parser.add_argument('--y_ths', type=float, default=0.5)
+    parser.add_argument('--y_ths', type=float, default=0.2)
     args = parser.parse_args()
 
     # Model

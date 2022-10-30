@@ -81,14 +81,14 @@ def tilda(text, lang):
 
 def bracket(text, lang):
     if text.startswith('(') and text.endswith(')'):
-        pass
+        return text
     else:
         return text.replace('(', '').replace(')', '')
 
 
 def bracket_dict(text, lang):
     if text.startswith('{') and text.endswith('}'):
-        pass
+        return text
     else:
         return text.replace('{', '').replace('}', '')
 
@@ -131,6 +131,7 @@ def spell_checker(interval, buffer_lang):
 
 
 # boxes
+# box = ['text text', 'text text text', 'text']
 def post_processing(box):
     all_line = ''
     for line in box:
@@ -141,6 +142,7 @@ def post_processing(box):
         buf_l = ''
         registers = []
         dict_case = {}
+        lang = 0
         for text in line.split():
             lang = lang_type(text)
             dict_case[text] = register(text, lang)
