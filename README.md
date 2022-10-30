@@ -3,6 +3,12 @@
 1. Создание 
 
 
+Для работы необходимо запустить следующие Docker контейнеры
+- Telebot
+- processing
+- pre_processing
+- post_processing
+
 
 
 ---
