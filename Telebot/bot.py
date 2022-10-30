@@ -61,10 +61,12 @@ def callback_inline(call):
         if data[0] == 'text':
             bot.send_message(int(data[1]), texts[int(data[2])])
         if data[0] == 'audio':
-            print("return voice")
             voice = text_to_audio.get_voice_rb(texts[int(data[2])])
             if voice != None:
                 bot.send_audio(int(data[1]), voice)
+            else:
+                bot.send_message(int(data[1]), "Не удалось сформировать аудио")
+
 
 bot_start()
 

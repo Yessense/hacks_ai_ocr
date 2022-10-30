@@ -1,4 +1,5 @@
 import io
+import os
 
 import pyttsx3
 import time
@@ -8,6 +9,7 @@ import base64
 import numpy as np
 import cv2
 from pathlib import Path
+
 
 from io import BytesIO
 from PIL import Image
@@ -30,13 +32,16 @@ class TextToVoice:
 
     def get_voice_rb(self, text):
         path_to_file = Path("files/last_voice.oga")
-        self.__model.save_to_file(text, path_to_file)
+        if path_to_file.is_file(): os.remove("files/last_voice.oga")
+        self.__model.save_to_file(text, "files/last_voice.oga")
         self.__model.runAndWait()
 
-        for i in range(100):
+        for i in range(10):
             time.sleep(1)
             if path_to_file.is_file():
-                return open("files/last_voice.oga", 'rb')
+                f = open("files/last_voice.oga", 'rb')
+                return f
+
         return None
 
 
@@ -103,7 +108,7 @@ class SpellChecker:
     @staticmethod
     def check_spelling(bounds):
 
-        # return bounds
+        return bounds
         last = -2 if len(bounds) & len(bounds[0]) == 3 else -1
 
         text = {
@@ -111,7 +116,7 @@ class SpellChecker:
         }
 
         got_bounds = requests.post("http://192.168.50.84:8083/get_spell_check", json = text)
-        print(got_bounds.json())
+
         for i, b in enumerate(got_bounds.json()['result']):
             bounds[i][last] = b
 
