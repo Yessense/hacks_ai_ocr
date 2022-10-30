@@ -8,9 +8,13 @@
 ---
 # Preprocessing
 ##### Были реализованны следующие функции:
-1. get_grayscale
-2. remove_noise
-3. dilate
+- [X] get_grayscale
+- [X] remove_noise
+- [X] dilate
+- [X] erode
+- [X] opening
+- [X] canny
+- [X] deskew
 
 ---
 # Postprocessing
