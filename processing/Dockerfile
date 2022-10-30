@@ -40,4 +40,5 @@ ADD ocr_reader.py /home/ocr_reader.py
 
 WORKDIR /home/
 
-ENTRYPOINT ["python3", "ocr_reader.py"]
+ENTRYPOINT ["python3", "ocr_
++reader.py"]

@@ -12,7 +12,17 @@ from pathlib import Path
 from io import BytesIO
 from PIL import Image
 
+class Preprocessing:
+    def __int__(self):
+        pass
+    @staticmethod
+    def preprocess(image):
+        data = {}
+        data['img'] = base64.encodebytes(image).decode('utf-8')
 
+        preprocessed_image = requests.post("http://0.0.0.0:8084/preprocess_img", json=data).json()['img']
+
+        return base64.encodebytes(preprocessed_image).encode('utf-8')
 class TextToVoice:
     def __init__(self):
         self.__model = pyttsx3.init()
@@ -23,14 +33,10 @@ class TextToVoice:
         self.__model.save_to_file(text, path_to_file)
         self.__model.runAndWait()
 
-        print("waiting started")
-
         for i in range(100):
             time.sleep(1)
-            print(i)
             if path_to_file.is_file():
                 return open("files/last_voice.oga", 'rb')
-        print("waiting failed...")
         return None
 
 
@@ -104,7 +110,7 @@ class SpellChecker:
             "box": list([i[last] for i in bounds])
         }
 
-        got_bounds = requests.post("http://192.168.50.39:1707/get_spell_check", json = text)
+        got_bounds = requests.post("http://192.168.50.84:8083/get_spell_check", json = text)
         print(got_bounds.json())
         for i, b in enumerate(got_bounds.json()['result']):
             bounds[i][last] = b

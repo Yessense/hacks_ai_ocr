@@ -1,9 +1,9 @@
+import base64
 from urllib import request
 
 import cv2
 import flask
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 class Preprocessing:
@@ -65,9 +65,20 @@ app = flask.Flask(__name__)
 
 @app.route('/preprocess_img', methods=['POST'])
 def post():
-    box = request.get_json()['box']
+
+    img_bytes = request.json['img']
+    img = base64.decodebytes(img_bytes.encode('utf-8'))
+    img = cv2.imdecode(np.frombuffer(img, np.uint8), -1)
+
     result = preproc.preprocessing(img)
-    return {'result': result}
+
+    # plt.imshow(result)
+    # plt.show()
+    result = cv2.imencode('.jpg', result)[1].tostring()
+    data = {}
+    data['img'] = base64.encodebytes(result).decode('utf-8')
+
+    return str(data)
 
 
 app.run(host='0.0.0.0', port=8084)
