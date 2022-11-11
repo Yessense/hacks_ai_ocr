@@ -1,9 +1,8 @@
 FROM pytorch/pytorch
 
-# if you forked EasyOCR, you can pass in your own GitHub username to use your fork
-# i.e. gh_username=myname
 ARG gh_username=JaidedAI
 ARG service_home="/home/EasyOCR"
+
 
 # Configure apt and install packages
 RUN apt-get update -y && \
@@ -26,8 +25,9 @@ RUN mkdir "$service_home" \
     && git remote add upstream "https://github.com/JaidedAI/EasyOCR.git" \
     && git pull upstream master
 
-RUN pip3 install flask
-EXPOSE 8080
+# Python packages
+RUN python -m pip install -r requirements.txt
+
 
 # Build
 RUN cd "$service_home" \
@@ -40,5 +40,6 @@ ADD ocr_reader.py /home/ocr_reader.py
 
 WORKDIR /home/
 
-ENTRYPOINT ["python3", "ocr_
-+reader.py"]
+EXPOSE 8080
+
+ENTRYPOINT ["python3", "ocr_reader.py"]

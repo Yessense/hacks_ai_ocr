@@ -52,8 +52,8 @@ if __name__ == '__main__':
         img = base64.decodebytes(img_bytes.encode('utf-8'))
         img = cv2.imdecode(np.frombuffer(img, np.uint8), -1)
 
-        bounds = reader.readtext(img, paragraph=args.paragraph, detail=args.detail, allowlist=args.allowed_list,
-                                 y_ths=args.y_ths)
+        bounds = reader.readtext(img, paragraph=args.paragraph, detail=args.detail,
+                                 allowlist=args.allowed_list, y_ths=args.y_ths)
 
         out = json.dumps(bounds, cls=NpEncoder)
         return str(out)
