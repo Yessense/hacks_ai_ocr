@@ -6,13 +6,25 @@
 2. Создание текстового документа по распознанному тексту на фотографии
 3. Ссылка на поиск в Яндексе по распознанному тексту.
 
-
 <p float="left">
-    <img src="/images/text.gif" width="25%" alt="Вывод текста"/>
-    <img src="/images/yandex_search.gif" width="25%" alt="Поиск в Яндексе"/>
-    <img src="/images/audio.gif" width="25%" alt="Преобразование в аудио"/>
-</p>
+    <figure>
+        <img src="/images/text.gif" width="25%" alt="Вывод текста"/>
+        <figcaption>An elephant at sunset</figcaption>
 
+    </figure>
+
+    <figure>
+        <img src="/images/yandex_search.gif" width="25%" alt="Поиск в Яндексе"/>
+        <figcaption>An elephant at sunset</figcaption>
+
+    </figure>
+
+    <figure>
+        <img src="/images/audio.gif" width="25%" alt="Преобразование в аудио"/>
+        <figcaption>An elephant at sunset</figcaption>
+
+    </figure>
+</p>
 
 #### Для работы необходимо запустить следующие Docker контейнеры
 
