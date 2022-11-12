@@ -47,10 +47,19 @@ if __name__ == '__main__':
             'img': [...]
         }
         :return:
+        [
+            [
+                [x1, y1]
+                [x2, y2]
+                [x3, y3]
+                [x4, y4]
+            ]
+        ]
         """
         img_bytes = request.json['img']
         img = base64.decodebytes(img_bytes.encode('utf-8'))
         img = cv2.imdecode(np.frombuffer(img, np.uint8), -1)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
         bounds = reader.readtext(img, paragraph=args.paragraph, detail=args.detail,
                                  allowlist=args.allowed_list, y_ths=args.y_ths)

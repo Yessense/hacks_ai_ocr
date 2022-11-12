@@ -1,8 +1,9 @@
-version: "3"
+version: "3.5"
 
 services:
   processing:
-    build: './processing'
+    build:
+      context: './processing'
     ports:
       - "8080:8080"
     deploy:

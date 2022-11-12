@@ -3,6 +3,7 @@ FROM pytorch/pytorch
 ARG gh_username=JaidedAI
 ARG service_home="/home/EasyOCR"
 
+EXPOSE 8080
 
 # Configure apt and install packages
 RUN apt-get update -y && \
@@ -26,8 +27,8 @@ RUN mkdir "$service_home" \
     && git pull upstream master
 
 # Python packages
-RUN python -m pip install -r requirements.txt
-
+COPY requirements.txt .
+RUN python -m pip install -r requirements.txt && rm requirements.txt
 
 # Build
 RUN cd "$service_home" \
@@ -39,7 +40,5 @@ ADD ./pretrained_models/ /home/.EasyOCR/model
 ADD ocr_reader.py /home/ocr_reader.py
 
 WORKDIR /home/
-
-EXPOSE 8080
 
 ENTRYPOINT ["python3", "ocr_reader.py"]
