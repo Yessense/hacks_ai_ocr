@@ -1,0 +1,6 @@
+flask==2.0.2
+pyTelegramBotAPI
+pyttsx3
+opencv-python
+numpy
+pillow

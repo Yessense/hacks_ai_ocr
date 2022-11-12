@@ -25,7 +25,6 @@ def got_image(message):
     bounds = processing.SpellChecker.check_spelling(bounds)
 
     # Joining text from picture
-
     last = -2 if len(bounds) & len(bounds[0]) == 3 else -1
     text = " ".join([i[last] for i in bounds])
     text_id = list(texts.keys())[-1] + 1

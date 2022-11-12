@@ -16,5 +16,7 @@ services:
     build: './pre_processing'
     ports:
       - "8084:8084"
+  telebot:
+    build: './telebot'
 
 

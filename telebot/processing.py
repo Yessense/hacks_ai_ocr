@@ -25,6 +25,8 @@ class Preprocessing:
         preprocessed_image = requests.post("http://0.0.0.0:8084/preprocess_img", json=data).json()['img']
 
         return base64.encodebytes(preprocessed_image).encode('utf-8')
+
+
 class TextToVoice:
     def __init__(self):
         self.__model = pyttsx3.init()

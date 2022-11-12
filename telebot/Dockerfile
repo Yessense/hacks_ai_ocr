@@ -1,7 +1,5 @@
-FROM pytorch/pytorch
+FROM python:3.8-slim
 
-# if you forked EasyOCR, you can pass in your own GitHub username to use your fork
-# i.e. gh_username=myname
 ARG service_home="/home/Telebot"
 
 # Configure apt and install packages
@@ -13,25 +11,20 @@ RUN apt-get update -y && \
     libxrender-dev \
     libgl1-mesa-dev \
     git \
+    ffmpeg \
     # cleanup
     && apt-get autoremove -y \
     && apt-get clean -y \
     && apt-get install espeak -y\
     && rm -rf /var/lib/apt/lists
 
-# Clone EasyOCR repo
-RUN mkdir "$service_home" \
+# Install pip requirements
+COPY requirements.txt .
+RUN python -m pip install -r requirements.txt
+
+RUN mkdir "$service_home" \processing \
     && mkdir "$service_home/files"
 
-RUN pip3 install flask \
-    && pip3 install pyTelegramBotAPI \
-    && pip3 install pyttsx3 \
-    && pip3 install opencv-python
-
-EXPOSE 8083
-
-
-# Add pretrained model
 ADD bot.py "$service_home/bot.py"
 ADD processing.py "$service_home/processing.py"
 

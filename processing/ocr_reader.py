@@ -26,7 +26,7 @@ class NpEncoder(json.JSONEncoder):
 if __name__ == '__main__':
     # Parse args
     parser = ArgumentParser(description='Process text')
-    parser.add_argument('--detail', type=int, default=0, choices=[0, 1])
+    parser.add_argument('--detail', type=int, default=1, choices=[0, 1])
     parser.add_argument('--paragraph', type=bool, default=True)
     parser.add_argument('--allowed_list', type=str, default=NUMBERS + SYMBOLS + LANG_CHARS)
     parser.add_argument('--y_ths', type=float, default=0.2)
