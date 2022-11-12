@@ -18,5 +18,8 @@ services:
       - "8084:8084"
   telebot:
     build: './telebot'
+    depends_on:
+      - "pre_processing"
+      - "processing"
 
 
