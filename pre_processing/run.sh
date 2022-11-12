@@ -1,1 +1,0 @@
-docker run -itd -p 8084:1707 --gpus all -e NVIDIA_DRIVER_CAPABILITIES=all --name pre_processing pre_processing:latest

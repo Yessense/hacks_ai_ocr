@@ -2,8 +2,7 @@ version: "3.5"
 
 services:
   processing:
-    build:
-      context: './processing'
+    build: './processing'
     ports:
       - "8080:8080"
     deploy:
@@ -13,3 +12,9 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [ gpu ]
+  pre_processing:
+    build: './pre_processing'
+    ports:
+      - "8084:8084"
+
+
