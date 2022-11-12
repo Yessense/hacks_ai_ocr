@@ -1,8 +1,10 @@
 # Распознавание текст с помощью ИИ
 
-<img src="/images/text.gif" width="25%"/>
-<img src="/images/yandex_search.gif" width="25%"/>
-<img src="/images/sound.gif" width="25%"/>
+<p float="left">
+    <img src="/images/text.gif" width="25%"/>
+    <img src="/images/yandex_search.gif" width="25%"/>
+    <img src="/images/audio.gif" width="25%"/>
+</p>
 
 #### Был реализован следующий функционал с использованием телеграм бота:
 
