@@ -7,9 +7,9 @@
 3. Ссылка на поиск в Яндексе по распознанному тексту.
 
 <p float="left">
+        <img src="/images/audio.gif" width="25%" alt="Преобразование в аудио"/>
         <img src="/images/text.gif" width="25%" alt="Вывод текста"/>
         <img src="/images/yandex_search.gif" width="25%" alt="Поиск в Яндексе"/>
-        <img src="/images/audio.gif" width="25%" alt="Преобразование в аудио"/>
 </p>
 
 ---

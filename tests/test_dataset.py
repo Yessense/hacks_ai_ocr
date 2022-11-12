@@ -7,7 +7,7 @@ import cv2
 
 def get_box(num: int):
     path = output = ''
-    with open('./dataset/train.csv', 'r') as csvfile:
+    with open('../dataset/train.csv', 'r') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             path = row['image_path']
@@ -15,6 +15,7 @@ def get_box(num: int):
             if str(num) in path:
                 break
     img = cv2.imread('./dataset/'+path)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     h, w, _ = img.shape
     #print(h, w)
     # проход по всем боксам
@@ -39,6 +40,7 @@ def get_box(num: int):
                     (tl[0], tl[1] + 30),
                     cv2.FONT_HERSHEY_COMPLEX,
                     0.5, (0, 255, 0), 2)
+
     return img
 
 
