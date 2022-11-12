@@ -12,12 +12,23 @@
         <img src="/images/audio.gif" width="25%" alt="Преобразование в аудио"/>
 </p>
 
-#### Для работы необходимо запустить следующие Docker контейнеры
+## Как пользоваться ботом
 
-- Telebot
-- processing
-- pre_processing
-- post_processing
+### Шаг 1. Запустить контейнеры 
+
+```shell
+git clone https://github.com/Yessense/hacks_ai_ocr/tree/project
+docker-compose build
+docker-compose up
+```
+
+### Шаг 2. Отправить фотографию боту
+
+https://t.me/HeroesofMLandMagicBot
+
+
+
+
 
 ---
 
