@@ -41,6 +41,10 @@ services:
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
       - CONFIG=levenshtein_corrector_ru
+  spellchecking:
+    build: './post_processing'
+    ports:
+      - "8083:8083"
 
 volumes:
   data_en:
