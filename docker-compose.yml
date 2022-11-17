@@ -21,5 +21,30 @@ services:
     depends_on:
       - "pre_processing"
       - "processing"
+  spellchecking_en:
+    image: "deeppavlov/base-gpu:latest"
+    ports:
+      - "8082:5000"
+    volumes:
+      - "data_en:/root/.deeppavlov"
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - CONFIG=brillmoore_wikitypos_en
+  spellchecking_ru:
+    image: "deeppavlov/base-gpu:latest"
+    ports:
+      - "8081:5000"
+    volumes:
+      - "data_ru:/root/.deeppavlov"
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - CONFIG=levenshtein_corrector_ru
+
+volumes:
+  data_en:
+  data_ru:
+
 
 
