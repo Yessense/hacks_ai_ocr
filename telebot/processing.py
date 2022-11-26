@@ -56,7 +56,7 @@ class ImgToText:
         data = {}
         data['img'] = base64.encodebytes(image).decode('utf-8')
 
-        bounds = requests.post("http://192.168.50.84:8080/get_bounds", json=data)
+        bounds = requests.post("http://127.0.0.1:8080/get_bounds", json=data)
 
         return bounds.json()
 
@@ -117,7 +117,7 @@ class SpellChecker:
             "box": list([i[last] for i in bounds])
         }
 
-        got_bounds = requests.post("http://192.168.50.84:8083/get_spell_check", json = text)
+        got_bounds = requests.post("http://127.0.0.1:8083/get_spell_check", json = text)
 
         for i, b in enumerate(got_bounds.json()['result']):
             bounds[i][last] = b
